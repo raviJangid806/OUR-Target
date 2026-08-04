@@ -23,7 +23,7 @@ def divide(dividend: int, divisor: int) -> int:
         a -= (b << shift)
         quotient += (1 << shift)
 
-    if negative:
+    if negative:  
         quotient = -quotient
 
     # Clamp to 32-bit signed range
