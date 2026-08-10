@@ -1,10 +1,10 @@
-package Ravi_practice_folder.java_code.ImportantTopics;
+
 
 public class SubsetMain {
     public static void main(String[] args) {
-        LargeSet largeSet = new LargeSet();
-        System.out.println(largeSet.largestDivisibleSubset(new int[] { 1, 2, 3 }));
+        PairSubset pairSubset = new PairSubset();
+        int[] nums = {1, 5, 11, 5};
 
-        // You can add code here to work with the Subsets and LargeSet classes
+        System.out.println(pairSubset.canPartition(nums));
     }
 }
