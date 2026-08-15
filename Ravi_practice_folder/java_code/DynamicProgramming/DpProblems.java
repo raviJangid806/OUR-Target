@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class DpProblems {
@@ -56,4 +57,43 @@ public class DpProblems {
         // System.out.println(dp);
         return dp.get(nums.length - 1);
     }
+
+    public boolean frogJump(int[] stones) {
+        int i = 0;
+        int space = stones[1] - stones[0];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int j = 0; j < stones.length; j++) {
+            map.put(stones[j], j);
+        }
+        for (int j = 0; j < stones.length; j++) {
+            System.out.print(stones[j] + ",");
+        }
+        System.out.println();
+        System.out.println(map);
+        // if (map.containsKey(7)) {
+        // System.out.println("7 is present");
+        // System.out.println("Index of 7 is: " + map.get(7));
+        // }
+        // return true;
+        return jump(stones, i, space, map);
+
+    }
+
+    public boolean jump(int[] arr, int i, int space, HashMap<Integer, Integer> map) {
+        if (map.containsKey(arr[i] + space) && map.get(arr[i] + space) > i) {
+            space = arr[map.get(arr[i] + space)] - arr[i];
+            i = map.get(arr[i] + space);
+        } else {
+            return false;
+        }
+        if (i == arr.length - 1) {
+            return true;
+        }
+        if (i >= arr.length - 1) {
+            return false;
+        }
+
+        return (jump(arr, i, space + 1, map) || jump(arr, i, space, map) || jump(arr, i, space - 1, map));
+    }
+
 }
