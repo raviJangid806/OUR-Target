@@ -96,4 +96,33 @@ public class DpProblems {
         return (jump(arr, i, space + 1, map) || jump(arr, i, space, map) || jump(arr, i, space - 1, map));
     }
 
+    public int minCostClimbingStairs(int[] cost) {
+        List<Integer> dp = new ArrayList<>();
+        dp.add(cost[0]);
+        if (cost.length <= 1) {
+            return dp.get(0);
+        }
+        dp.add(Math.min(cost[0], cost[1]));
+        for(int i=2; i<cost.length; i++) {
+            dp.add(Math.min(dp.get(i-1), dp.get(i-2)) + cost[i]);
+        }
+        return Math.min(dp.get(dp.size() - 1), dp.get(dp.size() - 2));
+
+    }
+    
+    public int findTargetSumWays(int[] nums, int target) {
+        return getTargetSumWays(nums, target,0,0);
+    }
+
+    int getTargetSumWays(int[] arr,int target,int sum,int index){
+        if(sum == target && index == arr.length){
+            return 1;
+        }
+        if(index == arr.length){
+            return 0;
+        }
+        return getTargetSumWays(arr, target, sum + arr[index],  index + 1) + getTargetSumWays(arr, target, sum - arr[index], index + 1);
+    }
+
+
 }
