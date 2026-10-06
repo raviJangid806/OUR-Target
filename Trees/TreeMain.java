@@ -2,7 +2,14 @@ import java.util.ArrayList;
 
 public class TreeMain {
     public static void main(String[] args) {
-        bstPermutation(3);
+        checkDiameter();
+    }
+
+    public static void checkDiameter() {
+        TreeNode root = new CreateTree().createSampleTree();
+        BSTOperation bstOperation = new BSTOperation();
+        int diameter = bstOperation.diameter(root);
+        System.out.println("Diameter of the tree: " + diameter);
     }
 
     public static void testBstTree() {

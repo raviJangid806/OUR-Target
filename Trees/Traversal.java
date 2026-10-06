@@ -6,7 +6,7 @@ public class Traversal {
         if (node == null) {
             return;
         }
-        System.out.print(node.value + " ");
+        System.out.print(node.val + " ");
         preOrder(node.left);
         preOrder(node.right);
     }
@@ -16,7 +16,7 @@ public class Traversal {
             return;
         }
         inOrder(node.left);
-        System.out.print(node.value + " ");
+        System.out.print(node.val + " ");
         inOrder(node.right);
     }
 
@@ -26,7 +26,7 @@ public class Traversal {
         }
         postOrder(node.left);
         postOrder(node.right);
-        System.out.print(node.value + " ");
+        System.out.print(node.val + " ");
     }
 
     public void levelOrder(TreeNode root) {
@@ -37,7 +37,7 @@ public class Traversal {
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode current = queue.poll();
-            System.out.print(current.value + " ");
+            System.out.print(current.val + " ");
             if (current.left != null) {
                 queue.add(current.left);
             }

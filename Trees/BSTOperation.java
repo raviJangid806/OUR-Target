@@ -2,18 +2,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BSTOperation {
+
+    public int diameter(TreeNode root){
+        if(root == null){
+            return 0;
+        }
+        int leftHeight = heightHelper(root.left);
+        int rightHeight = heightHelper(root.right);
+        int leftDiameter = diameter(root.left);
+        int rightDiameter = diameter(root.right);
+        return Math.max(leftHeight + rightHeight + 1, Math.max(leftDiameter, rightDiameter));
+    }
+
+    public void Height(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        int height = heightHelper(root);
+        System.out.println("Height of the BST: " + height);
+    }
+
+    private int heightHelper(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = heightHelper(root.left);
+        int rightHeight = heightHelper(root.right);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
     public boolean isValidBST(TreeNode root) {
-        return isValidBstHelper(root, root.value + 1);
+        return isValidBstHelper(root, root.val + 1);
     }
 
     private boolean isValidBstHelper(TreeNode root, int max) {
         if (root == null) {
             return true;
         }
-        if (root.value >= max) {
+        if (root.val >= max) {
             return false;
         }
-        return isValidBstHelper(root.left, root.value) && isValidBstHelper(root.right, max);
+        return isValidBstHelper(root.left, root.val) && isValidBstHelper(root.right, max);
     }
 
     void generate(int n, List<Integer> current, boolean[] used, List<TreeNode> bstList) {

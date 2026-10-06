@@ -1,16 +1,16 @@
 class TreeNode {
-    int value;
+    int val;
     TreeNode left;
     TreeNode right;
 
     TreeNode() {
-        this.value = 0;
+        this.val = 0;
         this.left = null;
         this.right = null;
     }
 
-    TreeNode(int value) {
-        this.value = value;
+    TreeNode(int val) {
+        this.val = val;
         this.left = null;
         this.right = null;
     }
